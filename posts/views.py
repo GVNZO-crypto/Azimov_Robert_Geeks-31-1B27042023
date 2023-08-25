@@ -2,7 +2,7 @@ from django.shortcuts import HttpResponse
 from datetime import datetime
 # Create your views here.
 
-def main_view(request):
+def test_view(request):
     if request.method == 'GET':
         return HttpResponse("This is my first project")
         
