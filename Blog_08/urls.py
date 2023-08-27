@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 # from posts import views
 from Product import views
+from Blog_08 import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     # path ('goodbye/', views.goodbye),
     path('', views.main_view),
     path('products/', views.product_view),
+    path('category/', views.category)
 ]

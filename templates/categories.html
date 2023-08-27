@@ -1,0 +1,15 @@
+{% extends "layouts/index.html" %}
+
+{% block content %}
+<div class="categories" style="display: flex; justify-content: space-between; width: 80%; margin-left: 10%">
+    {% for category in categories %}
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ category.name }}</h5>
+          <a href="#" class="btn btn-primary">Товары этой категории</a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
