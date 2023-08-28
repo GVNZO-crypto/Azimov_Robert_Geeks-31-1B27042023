@@ -1,15 +1,22 @@
 {% extends "layouts/index.html" %}
 
 {% block content %}
-<div class="categories" style="display: flex; justify-content: space-between; width: 80%; margin-left: 10%">
-    {% for category in categories %}
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ category.name }}</h5>
-          <a href="#" class="btn btn-primary">Товары этой категории</a>
+<div class="categories">
+  <div class="container">
+    <h2 class="text-center">Список категорий</h2>
+    <div class="row">
+      {% for category in categories %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="Картинка категории">
+          <div class="card-body">
+            <h5 class="card-title">{{ category.name }}</h5>
+            <a href="/category/{{ category.id }}/products/" class="btn btn-primary">Товары этой категории</a>
+          </div>
         </div>
       </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
 </div>
 {% endblock %}

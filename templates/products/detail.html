@@ -1,0 +1,36 @@
+{% extends "layouts/index.html" %}
+
+{% block content %}
+<div class="product-details" style="width: 80%; margin: 0 auto;">
+  <div class="card" style="border: none;">
+    <img src="/media/{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+    <div class="card-body">
+      <h2 class="card-title">{{ product.title }}</h2>
+      <p class="card-subtitle mb-2 text-muted">Цена: ${{ product.price }}</p>
+      <p class="card-subtitle mb-2 text-muted">Категория: {{ product.category.name }}</p>
+      <p class="card-text">{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="reviews" style="width: 80%; margin: 0 auto;">
+  <h3>Добавить отзыв</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+  </form>
+</div>
+
+<div class="reviews" style="width: 80%; margin: 0 auto;">
+  <h3>Отзывы о товаре</h3>
+  {% for review in product.reviews.all %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ review.title }}</h5>
+      <p class="card-text">{{ review.comment }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
