@@ -1,0 +1,41 @@
+{% extends "layouts/index.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Создание продукта</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="font-weight-bold">Изображение продукта:</label>
+                            {{ product_form.image }}
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Название продукта:</label>
+                            {{ product_form.title }}
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Описание продукта:</label>
+                            {{ product_form.description }}
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Цена продукта:</label>
+                            {{ product_form.price }}
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Рейтинг:</label>
+                            {{ product_form.rate }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Создать продукт</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

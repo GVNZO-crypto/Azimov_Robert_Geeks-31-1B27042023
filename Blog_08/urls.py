@@ -29,10 +29,12 @@ urlpatterns = [
     # path ('hello/', views.hello_views),
     # path ('time/', views.time),
     # path ('goodbye/', views.goodbye),
-    path('', views.main_view),
+    path('', views.main_view,name='index'),
     path('products/', views.product_view),
-    path('product/<int:id>/', views.product_detail_view),
-    path('category/', views.category)
+    path('product/<int:id>/', views.product_detail_view,name='product_detail_view'),
+    path('category/', views.category,name='category'),
+    path('products/create', views.create_product),
+    path('category/create', views.create_category),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

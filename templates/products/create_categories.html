@@ -1,0 +1,28 @@
+{% extends "layouts/index.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Создание категории</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ category_form.image.id_for_label }}" class="font-weight-bold">Изображение категории:</label>
+                            {{ category_form.image }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ category_form.name.id_for_label }}" class="font-weight-bold">Название категории:</label>
+                            {{ category_form.name }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Создать категорию</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@
       {% for category in categories %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
-          <img src="..." class="card-img-top" alt="Картинка категории">
+          <img src="/media/{{ category.image }}" class="card-img-top" alt="Картинка категории">
           <div class="card-body">
             <h5 class="card-title">{{ category.name }}</h5>
             <a href="/category/{{ category.id }}/products/" class="btn btn-primary">Товары этой категории</a>
