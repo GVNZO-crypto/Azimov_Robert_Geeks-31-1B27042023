@@ -25,7 +25,7 @@ def category(request):
     context_data = {
         "categories": categories
     }
-    return render(request, 'categories.html', context=context_data)
+    return render(request, 'categories/categories.html', context=context_data)
 
 
 # Подробное представление продукта
@@ -70,6 +70,6 @@ def create_category(request):
             return redirect('category')
     else:
         category_form = CategoryCreateForm()
-    return render(request, 'products/create_categories.html', {'category_form': category_form})
+    return render(request, 'categories/create_categories.html', {'category_form': category_form})
 
 # БЛОК ПОЛЬЗОВАТЕЛЬСКИХ СТРАНИЦ #

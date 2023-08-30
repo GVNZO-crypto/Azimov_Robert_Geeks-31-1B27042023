@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 # from posts import views
-from Product import views
+from Product import views as product_views
+from users import views as users_views
 from Blog_08 import settings
 
 
@@ -29,12 +30,18 @@ urlpatterns = [
     # path ('hello/', views.hello_views),
     # path ('time/', views.time),
     # path ('goodbye/', views.goodbye),
-    path('', views.main_view,name='index'),
-    path('products/', views.product_view),
-    path('product/<int:id>/', views.product_detail_view,name='product_detail_view'),
-    path('category/', views.category,name='category'),
-    path('products/create', views.create_product),
-    path('category/create', views.create_category),
+    path('', product_views.main_view,name='index'),
+    path('products/', product_views.product_view,name='products'),
+    path('product/<int:id>/', product_views.product_detail_view,name='product_detail_view'),
+    path('category/', product_views.category,name='category'),
+   
+    path('products/create', product_views.create_product),
+    path('category/create', product_views.create_category),
+    
+    path('users/register', users_views.register_view),
+    path('users/auth', users_views.auth_view),
+    path('users/logout', users_views.logout_view),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
