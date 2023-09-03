@@ -3,20 +3,49 @@
 {% block content %}
 <div class="products">
   <div class="container">
-    <h2 class="text-center">Список товаров</h2>
     <div class="row">
-      {% for product in products %}
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
-          <img src="/media/{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text">Цена: {{ product.price }}</p>
-            <p class="card-text">Рейтинг: {{ product.rate }}</p>
-            <a href="/product/{{ product.id }}/" class="btn btn-primary">Подробнее</a>
-          </div>
+      <div class="col-md-8 offset-md-2">
+        <div class="search-form">
+          <h2 class="text-center mb-4">Поиск товаров</h2>
+          <form action="/products/" method="get">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="search" placeholder="Введите ключевое слово">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Найти</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
+    
+    <h2 class="text-center mt-5 mb-4">Список товаров</h2>
+    
+    <div class="row">
+      {% if products %}
+        {% for product in products %}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <img src="/media/{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">Цена: {{ product.price }} рублей</p>
+                <p class="card-text">Рейтинг: {{ product.rate }}/5</p>
+                <a href="/product/{{ product.id }}/" class="btn btn-primary">Подробнее</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p class="text-center">Товары не найдены.</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="pages">
+      {% for page in pages %}
+        <a href="/products/?page={{ page }}" class="btn btn-secondary">{{ page }}</a>
       {% endfor %}
     </div>
   </div>
